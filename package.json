@@ -1,0 +1,38 @@
+{
+  "name": "react-training",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "nodemon --exec babel-node -- server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheOneYouDontLike/react-training.git"
+  },
+  "keywords": [
+    "react",
+    "training"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheOneYouDontLike/react-training/issues"
+  },
+  "homepage": "https://github.com/TheOneYouDontLike/react-training",
+  "dependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "css-loader": "^0.19.0",
+    "file-loader": "^0.8.4",
+    "style-loader": "^0.12.4",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.2"
+  }
+}
