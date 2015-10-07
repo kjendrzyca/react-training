@@ -17,9 +17,10 @@ let ProductsList = React.createClass({
             return (
                 <div key={product.id}>
                     <h3>{product.name}</h3>
-                    <p>some desc</p>
+                    <p>{product.description}</p>
                     <p>Price: {product.price} PLN</p>
                     <button className="btn btn-default" onClick={this._addProductToCart.bind(null, product.id)}>Add to cart</button>
+                    <hr />
                 </div>
             );
         });
