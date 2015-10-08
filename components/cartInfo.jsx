@@ -1,7 +1,7 @@
 import React from 'react';
-let PropTypes = React.PropTypes;
+const PropTypes = React.PropTypes;
 
-let CartInfo = React.createClass({
+const CartInfo = React.createClass({
 
     propTypes: {
         cart: PropTypes.array.isRequired

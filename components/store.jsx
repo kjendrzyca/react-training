@@ -1,8 +1,9 @@
 import React from 'react';
 import ProductsList from './productsList';
 import CartInfo from './cartInfo';
+import ProductDetails from './productDetails';
 
-let mockedProducts = [
+const mockedProducts = [
     {id: 1, name: 'asus laptop', description: 'super cool asus laptop, screen made from dragon tears', price: 2000},
     {id: 2, name: 'macbook', description: 'overpriced but cool laptop for hipsters', price: 7200},
     {id: 3, name: 'samsung tv', description: '42" samsung tv with wi-fi and free beers', price: 1500},
@@ -10,11 +11,12 @@ let mockedProducts = [
     {id: 5, name: 'earphones', description: 'soundproof earphones + bonus: celine dion cd with her greatest hits', price: 50}
 ];
 
-let Store = React.createClass({
+const Store = React.createClass({
 
     getInitialState () {
         return {
-            cart: []
+            cart: [],
+            currentlyDisplayedProductId: 0
         };
     },
 
@@ -38,6 +40,37 @@ let Store = React.createClass({
         });
     },
 
+    _seeDetailsHandler (productId) {
+        this.setState(() => {
+            return {currentlyDisplayedProductId: productId};
+        });
+    },
+
+    _getCurrentView () {
+        const currentlyDisplayedProductId = this.state.currentlyDisplayedProductId;
+
+        if (currentlyDisplayedProductId) {
+            const productToDisplay = mockedProducts.find(product => {
+                return product.id === currentlyDisplayedProductId;
+            });
+
+            return (
+                <ProductDetails
+                    details={productToDisplay}
+                />
+            );
+        }
+
+        return (
+            <ProductsList
+                addProductToCartHandler={this._addProductToCartHandler}
+                products={mockedProducts}
+                seeDetailsHandler={this._seeDetailsHandler}
+            />
+        );
+
+    },
+
     render () {
         return (
             <div className="Store col-xs-12">
@@ -45,10 +78,7 @@ let Store = React.createClass({
 
                 <CartInfo cart={this.state.cart} />
 
-                <ProductsList
-                    addProductToCartHandler={this._addProductToCartHandler}
-                    products={mockedProducts}
-                />
+                {this._getCurrentView()}
 
             </div>
         );
