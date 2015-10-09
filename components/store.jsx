@@ -46,6 +46,10 @@ const Store = React.createClass({
         });
     },
 
+    _goBackHandler () {
+        this.setState({currentlyDisplayedProductId: 0});
+    },
+
     _getCurrentView () {
         const currentlyDisplayedProductId = this.state.currentlyDisplayedProductId;
 
@@ -57,6 +61,7 @@ const Store = React.createClass({
             return (
                 <ProductDetails
                     details={productToDisplay}
+                    goBackHandler={this._goBackHandler}
                 />
             );
         }
