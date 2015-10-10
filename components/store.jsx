@@ -60,8 +60,9 @@ const Store = React.createClass({
 
             return (
                 <ProductDetails
+                    addProductToCartHandler={this._addProductToCartHandler}
                     details={productToDisplay}
-                    goBackHandler={this._goBackHandler}
+                    goBackToProductsListHandler={this._goBackHandler}
                 />
             );
         }
