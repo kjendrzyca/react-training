@@ -2,26 +2,31 @@ import React from 'react';
 import ProductsList from './productsList';
 import CartInfo from './cartInfo';
 import ProductDetails from './productDetails';
-
-const mockedProducts = [
-    {id: 1, name: 'asus laptop', description: 'super cool asus laptop, screen made from dragon tears', price: 2000},
-    {id: 2, name: 'macbook', description: 'overpriced but cool laptop for hipsters', price: 7200},
-    {id: 3, name: 'samsung tv', description: '42" samsung tv with wi-fi and free beers', price: 1500},
-    {id: 4, name: 'das keyboard', description: 'just a normal keyboard with black keys', price: 800},
-    {id: 5, name: 'earphones', description: 'soundproof earphones + bonus: celine dion cd with her greatest hits', price: 50}
-];
+import ProductsApi from '../productsApi';
 
 const Store = React.createClass({
 
     getInitialState () {
         return {
             cart: [],
-            currentlyDisplayedProductId: 0
+            currentlyDisplayedProductId: 0,
+            products: []
         };
     },
 
+    componentDidMount () {
+        ProductsApi.getAll((error, products) => {
+            if (error) {
+                alert(error);
+                return;
+            }
+
+            this.setState({products: products});
+        });
+    },
+
     _addProductToCartHandler (productId) {
-        const productToAdd = mockedProducts.find(product => {
+        const productToAdd = this.state.products.find(product => {
             return product.id === productId;
         });
 
@@ -54,15 +59,11 @@ const Store = React.createClass({
         const currentlyDisplayedProductId = this.state.currentlyDisplayedProductId;
 
         if (currentlyDisplayedProductId) {
-            const productToDisplay = mockedProducts.find(product => {
-                return product.id === currentlyDisplayedProductId;
-            });
-
             return (
                 <ProductDetails
                     addProductToCartHandler={this._addProductToCartHandler}
-                    details={productToDisplay}
                     goBackToProductsListHandler={this._goBackHandler}
+                    productId={currentlyDisplayedProductId}
                 />
             );
         }
@@ -70,7 +71,7 @@ const Store = React.createClass({
         return (
             <ProductsList
                 addProductToCartHandler={this._addProductToCartHandler}
-                products={mockedProducts}
+                products={this.state.products}
                 seeDetailsHandler={this._seeDetailsHandler}
             />
         );

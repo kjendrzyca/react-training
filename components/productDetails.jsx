@@ -1,12 +1,31 @@
 import React from 'react';
+import ProductsApi from '../productsApi';
+
 const PropTypes = React.PropTypes;
 
 const Product = React.createClass({
 
     propTypes: {
         addProductToCartHandler: PropTypes.func.isRequired,
-        details: PropTypes.object.isRequired,
-        goBackToProductsListHandler: PropTypes.func.isRequired
+        goBackToProductsListHandler: PropTypes.func.isRequired,
+        productId: PropTypes.number.isRequired
+    },
+
+    getInitialState () {
+        return {
+            product: null
+        };
+    },
+
+    componentDidMount () {
+        ProductsApi.getById(this.props.productId, (error, product) => {
+            if (error) {
+                alert(error);
+                return;
+            }
+
+            this.setState({product: product});
+        });
     },
 
     _goBackToProductsList () {
@@ -18,7 +37,12 @@ const Product = React.createClass({
     },
 
     render () {
-        const productDetails = this.props.details;
+        const productDetails = this.state.product;
+
+        if (!productDetails) {
+            return null;
+        }
+
         return (
             <div className="Product">
                 <h2>{productDetails.name} (id:{productDetails.id})</h2>
