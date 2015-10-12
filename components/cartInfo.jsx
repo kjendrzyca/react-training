@@ -13,7 +13,7 @@ const CartInfo = React.createClass({
 
     render () {
         return (
-            <div className="CartInfo">
+            <div className="CartInfo col-xs-4">
                 <div className="pull-right">
                     <div>Prodcuts in cart: {this.props.cart.length}</div>
                     <div>

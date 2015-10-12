@@ -3,7 +3,7 @@ import ProductsApi from '../productsApi';
 
 const PropTypes = React.PropTypes;
 
-const Product = React.createClass({
+const ProductDetails = React.createClass({
 
     propTypes: {
         addProductToCartHandler: PropTypes.func.isRequired,
@@ -44,7 +44,7 @@ const Product = React.createClass({
         }
 
         return (
-            <div className="Product">
+            <div className="ProductDetails col-xs-8">
                 <h2>{productDetails.name} (id:{productDetails.id})</h2>
                 <p>Description:</p>
                 <p>{productDetails.description}</p>
@@ -57,4 +57,4 @@ const Product = React.createClass({
 
 });
 
-export default Product;
+export default ProductDetails;

@@ -80,12 +80,16 @@ const Store = React.createClass({
 
     render () {
         return (
-            <div className="Store col-xs-12">
-                <h1>Welcome !</h1>
+            <div className="Store">
+                <div className="row">
+                    <h1 className="col-xs-8">Welcome !</h1>
+                    <CartInfo cart={this.state.cart} />
+                </div>
 
-                <CartInfo cart={this.state.cart} />
+                <div className="row">
+                    {this._getCurrentView()}
+                </div>
 
-                {this._getCurrentView()}
 
             </div>
         );

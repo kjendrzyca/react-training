@@ -9,6 +9,12 @@ const ProductsList = React.createClass({
         seeDetailsHandler: PropTypes.func.isRequired
     },
 
+    getInitialState () {
+        return {
+            searchText: ''
+        };
+    },
+
     _addProductToCart (productId) {
         this.props.addProductToCartHandler(productId);
     },
@@ -17,8 +23,13 @@ const ProductsList = React.createClass({
         this.props.seeDetailsHandler(productId);
     },
 
+    _changeSearchText ($event) {
+        let searchText = $event.target.value;
+        this.setState({searchText: searchText});
+    },
+
     _getProducts () {
-        return this.props.products.map(product => {
+        return this._filterBySearchText(this.props.products).map(product => {
             return (
                 <div key={product.id}>
                     <h3>{product.name}</h3>
@@ -32,9 +43,28 @@ const ProductsList = React.createClass({
         });
     },
 
+    _filterBySearchText (productsList) {
+        if (!this.state.searchText) {
+            return productsList;
+        }
+
+        return this.props.products.filter((product) => {
+            return product.name.toLowerCase().indexOf(this.state.searchText.toLowerCase()) > -1;
+        });
+    },
+
     render () {
         return (
-            <div className="ProductsList">
+            <div className="ProductsList col-xs-8">
+                <div className="form-group">
+                    <input
+                        className="form-control"
+                        onChange={this._changeSearchText}
+                        placeholder="search..."
+                        type="text"
+                    />
+                </div>
+
                 {this._getProducts()}
             </div>
         );
