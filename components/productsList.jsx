@@ -22,7 +22,7 @@ const ProductsList = React.createClass({
             return (
                 <div key={product.id}>
                     <h3>{product.name}</h3>
-                    <p>{product.description}</p>
+                    <p>{product.shortDescription}</p>
                     <p>Price: {product.price} PLN</p>
                     <button className="btn btn-default" onClick={this._addProductToCart.bind(null, product.id)}>Add to cart</button>
                     <button className="btn btn-default" onClick={this._seeDetails.bind(null, product.id)}>See details</button>
