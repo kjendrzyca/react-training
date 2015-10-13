@@ -1,14 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router';
+
 const PropTypes = React.PropTypes;
 
 const CartInfo = React.createClass({
 
     propTypes: {
         cart: PropTypes.array.isRequired
-    },
-
-    _proceedToCheckout () {
-        alert('proceeding!');
     },
 
     render () {
@@ -24,7 +22,7 @@ const CartInfo = React.createClass({
                                 .reduce((prev, next) => (prev + next), 0)
                         }
                     </div>
-                    <button className="btn btn-primary" onClick={this._proceedToCheckout}>Proceed to checkout</button>
+                    <Link to="/cart">Proceed to checkout</Link>
                 </div>
             </div>
         );

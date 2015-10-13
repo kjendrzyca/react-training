@@ -90,7 +90,6 @@ const Store = React.createClass({
                     {this._getCurrentView()}
                 </div>
 
-
             </div>
         );
     }

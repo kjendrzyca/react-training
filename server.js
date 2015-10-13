@@ -30,6 +30,10 @@ app.get('/api/products/:id', (req, res) => {
     res.json(productToDisplay);
 });
 
+app.get('*', function (req, res) {
+    res.sendFile(path.resolve(__dirname, 'index.html'));
+});
+
 let port = process.env.PORT || 3000;
 app.listen(port);
 
