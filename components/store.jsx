@@ -39,6 +39,8 @@ const Store = React.createClass({
             const newCart = cart;
             newCart.push(productToAdd);
 
+            window.sessionStorage.setItem('cart', JSON.stringify(newCart));
+
             return {
                 cart: newCart
             };
