@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import _ from 'lodash';
 
 const Cart = React.createClass({
@@ -39,10 +40,29 @@ const Cart = React.createClass({
         });
     },
 
+    _finalizePurchase () {
+        this.setState({cart: []}, () => {
+            window.sessionStorage.setItem('cart', JSON.stringify([]));
+            alert('Thank you for buying!');
+        });
+    },
+
+    _showFinalizeButton () {
+        if (this.state.cart.length) {
+            return <button className="btn btn-default" onClick={this._finalizePurchase}>Finalize purchase</button>;
+        }
+    },
+
     render () {
         return (
             <div className="Cart">
+                <div className="row">
+                    <h1 className="col-xs-8">Cart</h1>
+                </div>
                 {this._getCartItems()}
+                {this._showFinalizeButton()}
+                <hr />
+                <Link to="/">Back to list</Link>
             </div>
         );
     }

@@ -23,6 +23,17 @@ const Store = React.createClass({
 
             this.setState({products: products});
         });
+
+        const cart = window.sessionStorage.getItem('cart');
+        if (!cart) {
+            return;
+        }
+
+        this._addCartToState(cart);
+    },
+
+    _addCartToState (cart) {
+        this.setState({cart: JSON.parse(cart)});
     },
 
     _addProductToCartHandler (productId) {
@@ -39,11 +50,11 @@ const Store = React.createClass({
             const newCart = cart;
             newCart.push(productToAdd);
 
-            window.sessionStorage.setItem('cart', JSON.stringify(newCart));
-
             return {
                 cart: newCart
             };
+        }, () => {
+            window.sessionStorage.setItem('cart', JSON.stringify(this.state.cart));
         });
     },
 
