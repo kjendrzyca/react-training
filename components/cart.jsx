@@ -24,6 +24,10 @@ const Cart = React.createClass({
     },
 
     _getCartItems () {
+        if (!this.state.cart.length) {
+            return <div>Empty!</div>;
+        }
+
         const uniqueProducts = _.unique(this.state.cart, 'id');
         const countById = _.countBy(this.state.cart, 'id');
 

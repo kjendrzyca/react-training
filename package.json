@@ -33,7 +33,7 @@
     "superagent": "^1.4.0"
   },
   "devDependencies": {
-    "css-loader": "^0.19.0",
+    "css-loader": "^0.18.0",
     "file-loader": "^0.8.4",
     "style-loader": "^0.12.4",
     "url-loader": "^0.5.6",
