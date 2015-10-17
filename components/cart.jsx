@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
 import _ from 'lodash';
+import './common.css';
+import './cart.css';
 
 const Cart = React.createClass({
 
@@ -33,12 +35,21 @@ const Cart = React.createClass({
 
         return uniqueProducts.map((product) => {
             return (
-                <div key={product.id}>
-                    <h3>{product.name}</h3>
-                    <p>Price: {product.price} PLN</p>
-                    <p>How many: {countById[product.id]}</p>
-                    <p>Total: {product.price * countById[product.id]}</p>
-                    <hr />
+                <div className="row" key={product.id}>
+                    <div className="col-xs-4 product-image-box">
+                        <img
+                            alt={`${product.name}`}
+                            className="product-image"
+                            src={`images/${product.id}.jpg`}
+                        />
+                    </div>
+                    <div className="col-xs-8">
+                        <h3>{product.name}</h3>
+                        <p>Price: {product.price} PLN</p>
+                        <p>How many: {countById[product.id]}</p>
+                        <p><strong>Total: {product.price * countById[product.id]} PLN</strong></p>
+                        <hr />
+                    </div>
                 </div>
             );
         });
@@ -64,9 +75,8 @@ const Cart = React.createClass({
                     <h1 className="col-xs-8">Cart</h1>
                 </div>
                 {this._getCartItems()}
-                {this._showFinalizeButton()}
                 <hr />
-                <Link to="/">Back to list</Link>
+                {this._showFinalizeButton()} <Link to="/">Back to list</Link>
             </div>
         );
     }

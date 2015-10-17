@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import './cart.css';
-
+import './cartInfo.css';
 const PropTypes = React.PropTypes;
 
 const CartInfo = React.createClass({

@@ -3,6 +3,7 @@ import ProductsList from './productsList';
 import CartInfo from './cartInfo';
 import ProductDetails from './productDetails';
 import ProductsApi from '../productsApi';
+import './common.css';
 
 const Store = React.createClass({
 

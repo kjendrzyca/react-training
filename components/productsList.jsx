@@ -31,13 +31,22 @@ const ProductsList = React.createClass({
     _getProducts () {
         return this._filterBySearchText(this.props.products).map(product => {
             return (
-                <div key={product.id}>
-                    <h3>{product.name}</h3>
-                    <p>{product.shortDescription}</p>
-                    <p>Price: {product.price} PLN</p>
-                    <button className="btn btn-default" onClick={this._addProductToCart.bind(null, product.id)}>Add to cart</button>
-                    <button className="btn btn-default" onClick={this._seeDetails.bind(null, product.id)}>See details</button>
-                    <hr />
+                <div className="row" key={product.id}>
+                    <div className="col-xs-4">
+                        <img
+                            alt={`${product.name}`}
+                            className="product-image"
+                            src={`images/${product.id}.jpg`}
+                        />
+                    </div>
+                    <div className="col-xs-8">
+                        <h3>{product.name}</h3>
+                        <p>{product.shortDescription}</p>
+                        <p>Price: {product.price} PLN</p>
+                        <button className="btn btn-default" onClick={this._addProductToCart.bind(null, product.id)}>Add to cart</button>
+                        <button className="btn btn-default" onClick={this._seeDetails.bind(null, product.id)}>See details</button>
+                        <hr />
+                    </div>
                 </div>
             );
         });

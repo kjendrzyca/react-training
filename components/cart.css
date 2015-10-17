@@ -1,4 +1,11 @@
-.CartInfo {
-    line-height: 25px;
-    margin-top: 20px;
+.Cart {
+    margin-bottom: 20px;
+}
+
+.Cart .product-image-box {
+    text-align: center;
+}
+
+.Cart .product-image {
+    max-width: 200px;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductsApi from '../productsApi';
-
 const PropTypes = React.PropTypes;
 
 const ProductDetails = React.createClass({
@@ -45,12 +44,23 @@ const ProductDetails = React.createClass({
 
         return (
             <div className="ProductDetails col-xs-8">
-                <h2>{productDetails.name} (id:{productDetails.id})</h2>
-                <p>Description:</p>
-                <p>{productDetails.description}</p>
-                <p>Price: {productDetails.price} PLN</p>
-                <button className="btn btn-default" onClick={this._addProductToCart.bind(null, productDetails.id)}>Add to cart</button>
-                <button className="btn btn-default" onClick={this._goBackToProductsList}>Go back</button>
+                <div className="row">
+                    <div className="col-xs-4">
+                        <img
+                            alt={`${productDetails.name}`}
+                            className="product-image"
+                            src={`images/${productDetails.id}.jpg`}
+                        />
+                    </div>
+                    <div className="col-xs-8">
+                        <h2>{productDetails.name} (id:{productDetails.id})</h2>
+                        <p>Description:</p>
+                        <p>{productDetails.description}</p>
+                        <p>Price: {productDetails.price} PLN</p>
+                        <button className="btn btn-default" onClick={this._addProductToCart.bind(null, productDetails.id)}>Add to cart</button>
+                        <button className="btn btn-default" onClick={this._goBackToProductsList}>Go back</button>
+                    </div>
+                </div>
             </div>
         );
     }
