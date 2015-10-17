@@ -95,7 +95,7 @@ const Store = React.createClass({
         return (
             <div className="Store">
                 <div className="row">
-                    <h1 className="col-xs-8">Welcome !</h1>
+                    <h1 className="col-xs-8">React shop</h1>
                     <CartInfo cart={this.state.cart} />
                 </div>
 
