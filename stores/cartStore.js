@@ -4,12 +4,12 @@ import {EventEmitter} from 'events';
 import Assign from 'object-assign';
 import Immutable from 'immutable';
 
-import Dispatcher from './dispatcher';
+import Dispatcher from '../dispatcher';
 import CartStoreActionTypes from './cartStoreActionTypes';
 
 
 const CHANGE_EVENT = 'change';
-const _cart = Immutable.List();
+let _cart = Immutable.List();
 const Product = Immutable.Record({
     id: 0,
     name: '',
@@ -20,8 +20,8 @@ const Product = Immutable.Record({
 
 const CartStore = Assign({}, EventEmitter.prototype, {
 
-    getAll () {
-        return _cart;
+    getCart () {
+        return _cart.toJS();
     },
 
     emitChange () {

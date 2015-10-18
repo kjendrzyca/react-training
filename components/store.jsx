@@ -3,6 +3,8 @@ import ProductsList from './productsList';
 import CartInfo from './cartInfo';
 import ProductDetails from './productDetails';
 import ProductsApi from '../productsApi';
+import CartStore from '../stores/cartStore';
+import CartActions from '../stores/cartActions';
 import './common.css';
 
 const Store = React.createClass({
@@ -16,6 +18,8 @@ const Store = React.createClass({
     },
 
     componentDidMount () {
+        CartStore.addChangeListener(this._onChange);
+
         ProductsApi.getAll((error, products) => {
             if (error) {
                 alert(error);
@@ -24,17 +28,14 @@ const Store = React.createClass({
 
             this.setState({products: products});
         });
-
-        const cart = window.sessionStorage.getItem('cart');
-        if (!cart) {
-            return;
-        }
-
-        this._addCartToState(cart);
     },
 
-    _addCartToState (cart) {
-        this.setState({cart: JSON.parse(cart)});
+    componentWillUnmount () {
+        CartStore.removeChangeListener(this._onChange);
+    },
+
+    _onChange () {
+        this.setState({cart: CartStore.getCart()});
     },
 
     _addProductToCartHandler (productId) {
@@ -47,16 +48,7 @@ const Store = React.createClass({
             return;
         }
 
-        this.setState(({cart}) => {
-            const newCart = cart;
-            newCart.push(productToAdd);
-
-            return {
-                cart: newCart
-            };
-        }, () => {
-            window.sessionStorage.setItem('cart', JSON.stringify(this.state.cart));
-        });
+        CartActions.add(productToAdd);
     },
 
     _seeDetailsHandler (productId) {
