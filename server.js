@@ -1,9 +1,9 @@
 'use strict';
 
-import express from 'express';
-import bodyParser from 'body-parser';
-import path from 'path';
-import mockedProducts from './mockedProducts';
+const express        = require('express');
+const bodyParser     = require('body-parser');
+const path           = require('path');
+const mockedProducts = require('./mockedProducts');
 
 let app = express();
 app.use(bodyParser.json());

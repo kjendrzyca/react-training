@@ -8,4 +8,4 @@ const mockedProducts = [
     {id: 5, name: 'earphones', shortDescription: 'soundproof earphones + bonus: celine dion cd with her greatest hits', description: lipsum, price: 50}
 ];
 
-export default mockedProducts;
+module.exports = mockedProducts;
