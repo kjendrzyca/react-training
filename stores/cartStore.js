@@ -5,8 +5,7 @@ import Assign from 'object-assign';
 import Immutable from 'immutable';
 
 import Dispatcher from '../dispatcher';
-import CartStoreActionTypes from './cartStoreActionTypes';
-
+import CartActionTypes from './cartActionTypes';
 
 const CHANGE_EVENT = 'change';
 let _cart = Immutable.List();
@@ -40,8 +39,14 @@ const CartStore = Assign({}, EventEmitter.prototype, {
 
 Dispatcher.register((action) => {
     switch (action.type) {
-        case CartStoreActionTypes.ADD:
+        case CartActionTypes.ADD:
             _cart = _cart.push(new Product(action.product));
+
+            CartStore.emitChange();
+            break;
+
+        case CartActionTypes.CLEAR:
+            _cart = _cart.clear();
 
             CartStore.emitChange();
             break;

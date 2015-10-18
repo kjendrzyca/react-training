@@ -1,6 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
 import _ from 'lodash';
+import CartStore from '../stores/cartStore';
+import CartActions from '../stores/cartActions';
+
 import './common.css';
 import './cart.css';
 
@@ -13,16 +16,20 @@ const Cart = React.createClass({
     },
 
     componentDidMount () {
-        const cart = window.sessionStorage.getItem('cart');
-        if (!cart) {
-            return;
-        }
-
-        this._addCartToState(cart);
+        CartStore.addChangeListener(this._onChange);
+        this._addCartToState(CartStore.getCart());
     },
 
-    _addCartToState (cart) {
-        this.setState({cart: JSON.parse(cart)});
+    componentWillUnmount () {
+        CartStore.removeChangeListener(this._onChange);
+    },
+
+    _onChange () {
+        this._addCartToState(CartStore.getCart());
+    },
+
+    _addCartToState (cartFromStore) {
+        this.setState({cart: cartFromStore});
     },
 
     _getCartItems () {
@@ -56,10 +63,8 @@ const Cart = React.createClass({
     },
 
     _finalizePurchase () {
-        this.setState({cart: []}, () => {
-            window.sessionStorage.setItem('cart', JSON.stringify([]));
-            alert('Thank you for buying!');
-        });
+        CartActions.clear();
+        alert('Thanks for buying!');
     },
 
     _showFinalizeButton () {

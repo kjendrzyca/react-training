@@ -1,11 +1,16 @@
 import Dispatcher from '../dispatcher';
-import CartStoreActionTypes from './cartStoreActionTypes';
+import CartActionTypes from './cartActionTypes';
 
 export default {
     add: (product) => {
         Dispatcher.dispatch({
-            type: CartStoreActionTypes.ADD,
+            type: CartActionTypes.ADD,
             product: product
+        });
+    },
+    clear: () => {
+        Dispatcher.dispatch({
+            type: CartActionTypes.CLEAR
         });
     }
 };
