@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "npm test",
+    "build": "webpack --watch",
     "start": "nodemon --exec babel-node -- server.js"
   },
   "repository": {
