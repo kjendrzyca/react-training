@@ -1,4 +1,5 @@
 export default {
     ADD: 'add',
-    CLEAR: 'clear'
+    CLEAR: 'clear',
+    REMOVE: 'remove'
 };

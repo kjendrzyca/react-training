@@ -8,9 +8,17 @@ export default {
             product: product
         });
     },
+
     clear: () => {
         Dispatcher.dispatch({
             type: CartActionTypes.CLEAR
+        });
+    },
+
+    remove: (productId) => {
+        Dispatcher.dispatch({
+            type: CartActionTypes.REMOVE,
+            productId: productId
         });
     }
 };

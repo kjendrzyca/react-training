@@ -50,6 +50,12 @@ Dispatcher.register((action) => {
 
             CartStore.emitChange();
             break;
+
+        case CartActionTypes.REMOVE:
+            _cart = _cart.filter(product => product.id !== action.productId);
+
+            CartStore.emitChange();
+            break;
     }
 });
 

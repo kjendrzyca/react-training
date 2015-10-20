@@ -55,11 +55,21 @@ const Cart = React.createClass({
                         <p>Price: {product.price} PLN</p>
                         <p>How many: {countById[product.id]}</p>
                         <p><strong>Total: {product.price * countById[product.id]} PLN</strong></p>
+                        <button
+                            className="btn btn-default"
+                            onClick={this._removeFromCart.bind(null, product.id)}
+                        >
+                            Remove
+                        </button>
                         <hr />
                     </div>
                 </div>
             );
         });
+    },
+
+    _removeFromCart (productId) {
+        CartActions.remove(productId);
     },
 
     _finalizePurchase () {
