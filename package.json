@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "npm test",
-    "build": "webpack --watch",
-    "start": "nodemon --exec babel-node -- server.js"
+    "build": "node_modules/.bin/webpack --watch",
+    "start": "nodemon --exec babel-node -- server.js",
+    "lint": "node_modules/.bin/eslint components/*.js server.js"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,8 @@
   },
   "devDependencies": {
     "css-loader": "^0.18.0",
+    "eslint": "^1.7.3",
+    "eslint-plugin-react": "^3.6.3",
     "file-loader": "^0.8.4",
     "style-loader": "^0.12.4",
     "url-loader": "^0.5.6",
