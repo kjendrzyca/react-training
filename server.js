@@ -31,7 +31,7 @@ app.get('/api/products/:id', (req, res) => {
     res.json(productToDisplay);
 });
 
-app.get('*', function (req, res) {
+app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 

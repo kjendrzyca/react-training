@@ -1,6 +1,6 @@
 # react-training
 
-Simple store app written in React to show its basic functionality and how it can be configured to work with Flux architecture.
+Simple shop written in React to show its basic functionality and how it can be configured to work with Flux architecture.
 
 ##How to run
 
