@@ -49,7 +49,7 @@ const ProductDetails = React.createClass({
                         <img
                             alt={`${productDetails.name}`}
                             className="product-image"
-                            src={`images/${productDetails.id}.jpg`}
+                            src={`/Content/images/${productDetails.id}.jpg`}
                         />
                     </div>
                     <div className="col-xs-8">

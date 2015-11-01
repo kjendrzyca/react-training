@@ -36,7 +36,7 @@ const ProductsList = React.createClass({
                         <img
                             alt={`${product.name}`}
                             className="product-image"
-                            src={`images/${product.id}.jpg`}
+                            src={`/Content/images/${product.id}.jpg`}
                         />
                     </div>
                     <div className="col-xs-8">
