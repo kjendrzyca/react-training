@@ -5,7 +5,7 @@ import ProductDetails from './productDetails';
 import ProductsApi from '../productsApi';
 import CartStore from '../stores/cartStore';
 import CartActions from '../stores/cartActions';
-import './common.css';
+//import './common.css';
 
 const Shop = React.createClass({
 
