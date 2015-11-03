@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 const PropTypes = React.PropTypes;
 
 const ProductsList = React.createClass({
@@ -45,6 +46,7 @@ const ProductsList = React.createClass({
                         <p>Price: {product.price} PLN</p>
                         <button className="btn btn-default" onClick={this._addProductToCart.bind(null, product.id)}>Add to cart</button>
                         <button className="btn btn-default" onClick={this._seeDetails.bind(null, product.id)}>See details</button>
+                        <Link to={`/recommend/${product.name}`}>Recommend this product</Link>
                         <hr />
                     </div>
                 </div>
