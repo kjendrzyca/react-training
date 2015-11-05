@@ -35,9 +35,18 @@ const Recommend = React.createClass({
         return (
             <div className="Recommend">
                 <form>
-                    <input disabled type="text" value={this.props.params.name} />
-                    <input onChange={this._onEmailChange} type="email" />
-                    <textarea cols="30" onChange={this._onTextChange} rows="10" />
+                    <div className="form-group">
+                        <label>Product Name:</label>
+                        <input className="form-control" disabled type="text" value={this.props.params.name} />
+                    </div>
+                    <div className="form-group">
+                        <label>Email:</label>
+                        <input className="form-control" onChange={this._onEmailChange} type="email" />
+                    </div>
+                    <div className="form-group">
+                        <label>Text</label>
+                        <textarea className="form-control" cols="30" onChange={this._onTextChange} rows="10" />
+                    </div>
                     <button className="btn btn-success" type="submit" onClick={this._recommend}>Recommend</button>
                 </form>
             </div>
