@@ -5,7 +5,7 @@ import ProductDetails from './productDetails';
 import ProductsApi from '../productsApi';
 import './common.css';
 
-const Store = React.createClass({
+const Shop = React.createClass({
 
     getInitialState () {
         return {
@@ -94,7 +94,7 @@ const Store = React.createClass({
 
     render () {
         return (
-            <div className="Store">
+            <div className="Shop">
                 <div className="row">
                     <h1 className="col-xs-8">React shop</h1>
                     <CartInfo cart={this.state.cart} />
@@ -110,4 +110,4 @@ const Store = React.createClass({
 
 });
 
-export default Store;
+export default Shop;
