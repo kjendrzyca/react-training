@@ -81,7 +81,6 @@ const Shop = React.createClass({
                 seeDetailsHandler={this._seeDetailsHandler}
             />
         );
-
     },
 
     render () {

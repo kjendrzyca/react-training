@@ -28,7 +28,8 @@ const Recommend = React.createClass({
     },
 
     _recommend () {
-        console.log('thank you for recommendation', this.state);
+        confirm('thank you for recommendation');
+        this.props.history.pushState(null, '/');
     },
 
     render () {

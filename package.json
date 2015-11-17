@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "node_modules/.bin/webpack --watch",
-    "start": "nodemon --exec babel-node -- server.js --watch server.js",
+    "start": "nodemon --exec babel-node -- server.js",
     "lint": "node_modules/.bin/eslint components/*.js server.js"
   },
   "repository": {
