@@ -94,7 +94,6 @@ const Shop = React.createClass({
                 <div className="row">
                     {this._getCurrentView()}
                 </div>
-
             </div>
         );
     }
