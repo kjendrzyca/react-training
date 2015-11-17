@@ -10,9 +10,9 @@ const mainContainer = document.getElementById('main-container');
 
 const routes = (
     <Router history={createBrowserHistory()}>
-        <Route path="/" component={Shop} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/recommend/:name" component={Recommend} />
+        <Route component={Shop} path="/" />
+        <Route component={Cart} path="/cart"  />
+        <Route component={Recommend} path="/recommend/:name" />
     </Router>
 );
 
