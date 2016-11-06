@@ -1,8 +1,8 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
+const div = React.DOM.div
 
 const Greetings = require('./components/greetings.js')
-const div = React.DOM.div
 
 const GreetingsFactory = React.createFactory(Greetings)
 

@@ -1,5 +1,4 @@
 const React = require('react')
-
 const h1 = React.DOM.h1
 
 const Greetings = React.createClass({
