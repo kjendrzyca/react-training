@@ -4,9 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "node_modules/.bin/webpack --watch",
-    "start": "nodemon --exec babel-node -- server.js",
-    "lint": "node_modules/.bin/eslint components/*.js server.js"
+    "build:watch": "webpack app.js public/bundle.js --watch"
   },
   "repository": {
     "type": "git",
@@ -26,5 +24,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack": "^1.13.3"
+  }
 }
