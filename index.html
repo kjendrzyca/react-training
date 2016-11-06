@@ -1,23 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="UTF-8">
     <title>React training</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div id="main-container" class="container">
+    <div id="app"></div>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script>
+        const div = React.DOM.div
+        const h1 = React.DOM.h1
 
-    </div>
+        const Greetings = React.createClass({
+            getDefaultProps () {
+                return {color: 'aqua'}
+            },
+
+            render () {
+                const {color, text} = this.props
+                return h1({style: {color: color}}, text)
+            }
+        })
+
+        const GreetingsFactory = React.createFactory(Greetings)
+
+        const SecondComponent = div(null,
+            GreetingsFactory({color: 'red', text: 'Hello from'}),
+            GreetingsFactory({color: 'green', text: 'the first'}),
+            GreetingsFactory({text: 'component'})
+        )
+
+        ReactDOM.render(SecondComponent, document.getElementById('app'))
+    </script>
 </body>
-<script type="text/javascript" src="/static/app.js"></script>
 </html>
