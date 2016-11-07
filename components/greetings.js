@@ -1,5 +1,4 @@
 const React = require('react')
-const h1 = React.DOM.h1
 
 const Greetings = React.createClass({
   getDefaultProps () {
@@ -8,7 +7,12 @@ const Greetings = React.createClass({
 
   render () {
     const {color, text} = this.props
-    return h1({style: {color: color}}, text)
+
+    return (
+      <div style={{padding: 10, backgroundColor: 'black'}}>
+        <h1 style={{color: color}}>{text}</h1>
+      </div>
+    )
   }
 })
 
