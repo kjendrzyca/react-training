@@ -12,7 +12,8 @@ const App = React.createClass({
         {id: ++i, text: 'buy groceries'},
         {id: ++i, text: 'visit mom'},
         {id: ++i, text: 'prepare dinner'}
-      ]
+      ],
+      activeDetails: 0
     }
   },
 
@@ -23,11 +24,15 @@ const App = React.createClass({
     })
   },
 
+  navigateTo (todoId) {
+    this.setState({activeDetails: todoId}, () => console.log(this.state))
+  },
+
   render () {
     return (
       <div className='App'>
         <div>TODO:</div>
-        <TodoList todos={this.state.todos} />
+        <TodoList navigateTo={this.navigateTo} todos={this.state.todos} />
         <InputBox addTodo={this.addTodo} />
       </div>
     )
