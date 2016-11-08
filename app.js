@@ -3,26 +3,33 @@ import ReactDOM from 'react-dom'
 import InputBox from './components/inputBox'
 import TodoList from './components/todoList'
 import TodoDetails from './components/todoDetails'
+import PersistenceService from './services/persistenceService'
 
-let i = 0
+const getId = () => Date.now().toString()
 
 const App = React.createClass({
   getInitialState () {
     return {
-      todos: [
-        {id: ++i, text: 'buy groceries', priority: 5},
-        {id: ++i, text: 'visit mom', priority: 10},
-        {id: ++i, text: 'prepare dinner', priority: 5}
-      ],
+      todos: [],
       activeDetails: 0
     }
   },
 
+  componentDidMount () {
+    const todos = PersistenceService.load()
+
+    if (!todos) {
+      return
+    }
+
+    this.setState({todos: todos}, () => console.log(this.state))
+  },
+
   addTodo (newTodo) {
     this.setState(state => {
-      state.todos.push({id: ++i, text: newTodo})
+      state.todos.push({id: getId(), text: newTodo})
       return state
-    })
+    }, () => PersistenceService.persist(this.state.todos))
   },
 
   navigateTo (todoId) {

@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack",
-    "build:watch": "webpack --watch"
+    "build:watch": "webpack --watch",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/kjendrzyca/react-training",
   "dependencies": {
+    "express": "^4.14.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   },
