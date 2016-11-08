@@ -27,8 +27,12 @@ const App = React.createClass({
 
   addTodo (newTodo) {
     this.setState(state => {
-      state.todos.push({id: getId(), text: newTodo.text, priority: newTodo.priority})
-      return state
+      return {
+        todos: [
+          ...state.todos,
+          {id: getId(), text: newTodo.text, priority: newTodo.priority, done: false}
+        ]
+      }
     }, () => PersistenceService.persist(this.state.todos))
   },
 
@@ -40,14 +44,33 @@ const App = React.createClass({
     this.setState({activeDetails: 0})
   },
 
+  toggleDone (todoId) {
+    this.setState(({todos}) => {
+      const todoToUpdateIndex = todos.findIndex(todo => todo.id === todoId)
+      const todoToUpdate = todos[todoToUpdateIndex]
+      todoToUpdate.done = !todoToUpdate.done
+
+      return [
+        ...todos.slice(0, todoToUpdateIndex),
+        ...todos.slice(todoToUpdateIndex),
+        todoToUpdate
+      ]
+    }, () => PersistenceService.persist(this.state.todos))
+  },
+
   render () {
     return (
       <div className='App'>
         <div>TODO:</div>
         {
           this.state.activeDetails
-            ? <TodoDetails close={this.close} todo={this.state.todos.find(t => t.id === this.state.activeDetails)} />
-            : <div>
+            ? (
+              <TodoDetails
+                close={this.close}
+                todo={this.state.todos.find(t => t.id === this.state.activeDetails)}
+                toggleDone={this.toggleDone}
+              />
+            ) : <div>
               <TodoList navigateTo={this.navigateTo} todos={this.state.todos} />
               <InputBox addTodo={this.addTodo} />
             </div>

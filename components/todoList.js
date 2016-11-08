@@ -1,7 +1,8 @@
 import React from 'react'
 
 const TodoListItem = ({todo, navigate}) => {
-  return <div onClick={() => navigate(todo.id)}>{todo.text}</div>
+  const elementStyle = {textDecoration: todo.done ? 'line-through' : 'none'}
+  return <div style={elementStyle} onClick={() => navigate(todo.id)}>{todo.text}</div>
 }
 TodoListItem.propTypes = {
   todo: React.PropTypes.object.isRequired,
@@ -15,7 +16,6 @@ const TodoList = React.createClass({
   },
 
   navigate (todoId) {
-    console.log(this.props)
     this.props.navigateTo(todoId)
   },
 
