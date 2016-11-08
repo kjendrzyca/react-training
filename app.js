@@ -27,7 +27,7 @@ const App = React.createClass({
 
   addTodo (newTodo) {
     this.setState(state => {
-      state.todos.push({id: getId(), text: newTodo})
+      state.todos.push({id: getId(), text: newTodo.text, priority: newTodo.priority})
       return state
     }, () => PersistenceService.persist(this.state.todos))
   },
