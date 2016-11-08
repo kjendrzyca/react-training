@@ -12,11 +12,10 @@ const InputBox = React.createClass({
   },
 
   changeText (event) {
-    this.setState({text: event.target.value}, () => console.log(this.state))
+    this.setState({text: event.target.value})
   },
 
   addTodo () {
-    console.log('adding todo', this.state.text)
     this.props.addTodo(this.state.text)
     this.setState({text: ''})
   },
