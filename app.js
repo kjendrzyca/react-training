@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {Router, Route, browserHistory} from 'react-router'
 import InputBox from './components/inputBox'
 import TodoList from './components/todoList'
 import TodoDetails from './components/todoDetails'
@@ -80,4 +81,11 @@ const App = React.createClass({
   }
 })
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(
+  (
+    <Router history={browserHistory}>
+      <Route path='/' component={App} />
+    </Router>
+  ),
+  document.getElementById('app')
+)
