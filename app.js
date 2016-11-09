@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import InputBox from './components/inputBox'
 import TodoList from './components/todoList'
