@@ -1,31 +1,55 @@
 import React from 'react'
+import {Link} from 'react-router'
 
-const TodoListItem = ({todo, navigate}) => {
+import InputBox from './inputBox'
+import PersistenceService from '../services/persistenceService'
+
+const getId = () => Date.now().toString()
+
+const TodoListItem = ({todo}) => {
   const elementStyle = {textDecoration: todo.done ? 'line-through' : 'none'}
-  return <div style={elementStyle} onClick={() => navigate(todo.id)}>{todo.text}</div>
+  return <div><Link style={elementStyle} to={`/todo/${todo.id}`}>{todo.text}</Link></div>
 }
 TodoListItem.propTypes = {
-  todo: React.PropTypes.object.isRequired,
-  navigate: React.PropTypes.func.isRequired
+  todo: React.PropTypes.object.isRequired
 }
 
 const TodoList = React.createClass({
-  propTypes: {
-    navigateTo: React.PropTypes.func.isRequired,
-    todos: React.PropTypes.array.isRequired
+  getInitialState () {
+    return {
+      todos: []
+    }
   },
 
-  navigate (todoId) {
-    this.props.navigateTo(todoId)
+  componentDidMount () {
+    const todos = PersistenceService.load()
+
+    if (!todos) {
+      return
+    }
+
+    this.setState({todos: todos}, () => console.log(this.state))
+  },
+
+  addTodo (newTodo) {
+    this.setState(state => {
+      return {
+        todos: [
+          ...state.todos,
+          {id: getId(), text: newTodo.text, priority: newTodo.priority, done: false}
+        ]
+      }
+    }, () => PersistenceService.persist(this.state.todos))
   },
 
   render () {
-    const {todos} = this.props
+    const {todos} = this.state
     return (
       <div className='TodoList'>
         {
-          todos.map(todo => <TodoListItem key={todo.id} todo={todo} navigate={this.navigate} />)
+          todos.map(todo => <TodoListItem key={todo.id} todo={todo} />)
         }
+        <InputBox addTodo={this.addTodo} />
       </div>
     )
   }
