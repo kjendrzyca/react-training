@@ -1,0 +1,27 @@
+{
+  "name": "react-training",
+  "version": "0.1.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kjendrzyca/react-training.git"
+  },
+  "keywords": [
+    "react",
+    "training"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kjendrzyca/react-training/issues"
+  },
+  "homepage": "https://github.com/kjendrzyca/react-training",
+  "dependencies": {
+
+  },
+  "devDependencies": {}
+}
