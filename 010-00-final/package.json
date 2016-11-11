@@ -1,0 +1,30 @@
+{
+  "name": "react-training",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build": "node_modules/.bin/webpack --watch",
+    "start": "nodemon --exec babel-node -- server.js",
+    "lint": "node_modules/.bin/eslint components/*.js server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kjendrzyca/react-training.git"
+  },
+  "keywords": [
+    "react",
+    "training"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kjendrzyca/react-training/issues"
+  },
+  "homepage": "https://github.com/kjendrzyca/react-training",
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  },
+  "devDependencies": {}
+}

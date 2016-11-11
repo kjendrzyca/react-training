@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React training</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script>
+        const div = React.DOM.div
+        const h1 = React.DOM.h1
+
+        const Greetings = React.createClass({
+            getDefaultProps () {
+                return {color: 'aqua'}
+            },
+
+            render () {
+                const {color, text} = this.props
+                return h1({style: {color: color}}, text)
+            }
+        })
+
+        const GreetingsFactory = React.createFactory(Greetings)
+
+        const SecondComponent = div(null,
+            GreetingsFactory({color: 'red', text: 'Hello from'}),
+            GreetingsFactory({color: 'green', text: 'the first'}),
+            GreetingsFactory({text: 'component'})
+        )
+
+        ReactDOM.render(SecondComponent, document.getElementById('app'))
+    </script>
+</body>
+</html>
