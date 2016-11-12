@@ -11,10 +11,6 @@ const filterBy = (searchTerm, products) => {
 }
 
 const ProductsList = React.createClass({
-  propTypes: {
-    selectProduct: React.PropTypes.func.isRequired
-  },
-
   getInitialState () {
     return {
       searchTerm: '',
@@ -43,7 +39,7 @@ const ProductsList = React.createClass({
         <SearchBox search={this.search} />
         {
           filterBy(this.state.searchTerm, this.state.products).map(product => (
-            <ProductListItem key={product.id} product={product} selectProduct={this.props.selectProduct} />
+            <ProductListItem key={product.id} product={product} />
           ))
         }
       </div>

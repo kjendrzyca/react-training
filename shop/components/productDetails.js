@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router'
 import BlockText from './blockText'
 import ProductsApi from '../productsApi'
 
@@ -9,8 +10,7 @@ const imageStyle = {
 
 const ProductDetails = React.createClass({
   propTypes: {
-    selectedProductId: React.PropTypes.number.isRequired,
-    resetSelectedProductId: React.PropTypes.func.isRequired
+    params: React.PropTypes.object.isRequired
   },
 
   getInitialState () {
@@ -20,7 +20,7 @@ const ProductDetails = React.createClass({
   },
 
   componentDidMount () {
-    ProductsApi.getById(this.props.selectedProductId, (error, response) => {
+    ProductsApi.getById(this.props.params.id, (error, response) => {
       if (error) {
         window.alert(error)
         return
@@ -39,11 +39,11 @@ const ProductDetails = React.createClass({
           <div>
             <BlockText color='orange' text={product.name} />
             <div>
-              <img style={imageStyle} src={`images/${product.id}.jpg`} />
+              <img style={imageStyle} src={`/images/${product.id}.jpg`} />
               <span>{product.shortDescription}</span>
             </div>
             <div>{product.description}</div>
-            <button onClick={this.props.resetSelectedProductId}>Back</button>
+            <Link to='/'>Go back</Link>
           </div>
           )
         }

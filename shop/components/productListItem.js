@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router'
 import BlockText from './blockText'
 
 const imageStyle = {
@@ -8,23 +9,19 @@ const imageStyle = {
 
 const ProductListItem = React.createClass({
   propTypes: {
-    product: React.PropTypes.object.isRequired,
-    selectProduct: React.PropTypes.func.isRequired
-  },
-
-  selectProduct () {
-    this.props.selectProduct(this.props.product.id)
+    product: React.PropTypes.object.isRequired
   },
 
   render () {
     const {product} = this.props
     return (
-      <div onClick={this.selectProduct}>
+      <div>
         <BlockText color='orange' text={product.name} />
         <div>
-          <img style={imageStyle} src={`images/${product.id}.jpg`} />
+          <img style={imageStyle} src={`/images/${product.id}.jpg`} />
           <span>{product.shortDescription}</span>
         </div>
+        <Link to={`products/${product.id}`}>Show details</Link>
       </div>
     )
   }
