@@ -19,34 +19,7 @@
   <div id="app" class="container"></div>
   <script src="node_modules/react/dist/react.js"></script>
   <script src="node_modules/react-dom/dist/react-dom.js"></script>
-  <script>
-    const div = React.DOM.div
-
-    const BlockText = React.createClass({
-      getDefaultProps () {
-        return {
-          color: 'black',
-          fontFamily: 'Verdana',
-          fontSize: 14
-        }
-      },
-
-      render () {
-        const {color, fontFamily, fontSize, text} = this.props
-        return (
-          div({style: {color: color, fontFamily: fontFamily, fontSize: fontSize}}, text)
-        )
-      }
-    })
-
-    const BlockTextFactory = React.createFactory(BlockText)
-
-    const ShopLogo = div(null,
-      BlockTextFactory({color: 'red', fontSize: 30, text: 'SuperShop'}),
-      BlockTextFactory({color: 'blue', text: 'This is where your dreams come true'})
-    )
-
-    ReactDOM.render(ShopLogo, document.getElementById('app'))
-  </script>
+  <script src="public/vendor.js"></script>
+  <script src="public/app.js"></script>
 </body>
 </html>
