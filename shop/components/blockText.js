@@ -1,5 +1,4 @@
 const React = require('react')
-const div = React.DOM.div
 
 const BlockText = React.createClass({
   getDefaultProps () {
@@ -12,8 +11,9 @@ const BlockText = React.createClass({
 
   render () {
     const {color, fontFamily, fontSize, text} = this.props
+    const style = {color: color, fontFamily: fontFamily, fontSize: fontSize}
     return (
-      div({style: {color: color, fontFamily: fontFamily, fontSize: fontSize}}, text)
+      <div style={style}>{text}</div>
     )
   }
 })
