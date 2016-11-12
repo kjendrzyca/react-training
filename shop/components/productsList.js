@@ -1,12 +1,7 @@
 import React from 'react'
 import products from '../mockedProducts'
-import BlockText from './blockText'
 import SearchBox from './searchBox'
-
-const imageStyle = {
-  height: '150px',
-  padding: '10px'
-}
+import ProductListItem from './productListItem'
 
 const filterBy = (searchTerm, products) => {
   return products.filter(
@@ -16,6 +11,10 @@ const filterBy = (searchTerm, products) => {
 }
 
 const ProductsList = React.createClass({
+  propTypes: {
+    selectProduct: React.PropTypes.func.isRequired
+  },
+
   getInitialState () {
     return {
       searchTerm: ''
@@ -32,13 +31,7 @@ const ProductsList = React.createClass({
         <SearchBox search={this.search} />
         {
           filterBy(this.state.searchTerm, products).map(product => (
-            <div key={product.id}>
-              <BlockText color='orange' text={product.name} />
-              <div>
-                <img style={imageStyle} src={`images/${product.id}.jpg`} />
-                <span>{product.shortDescription}</span>
-              </div>
-            </div>
+            <ProductListItem key={product.id} product={product} selectProduct={this.props.selectProduct} />
           ))
         }
       </div>
