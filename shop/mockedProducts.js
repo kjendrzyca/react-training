@@ -3,7 +3,7 @@ const lipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc se
 const mockedProducts = [
   {id: 1, name: 'asus laptop', shortDescription: 'super cool asus laptop, screen made from dragon tears', description: lipsum, price: 2000},
   {id: 2, name: 'macbook', shortDescription: 'overpriced but cool laptop for hipsters', description: lipsum, price: 7200},
-  {id: 3, name: 'samsung tv', shordDescription: '42" samsung tv with wi-fi and free beers', description: lipsum, price: 1500},
+  {id: 3, name: 'samsung tv', shortDescription: '42" samsung tv with wi-fi and free beers', description: lipsum, price: 1500},
   {id: 4, name: 'das keyboard', shortDescription: 'just a normal keyboard with black keys', description: lipsum, price: 800},
   {id: 5, name: 'earphones', shortDescription: 'soundproof earphones + bonus: celine dion cd with her greatest hits', description: lipsum, price: 50}
 ]
