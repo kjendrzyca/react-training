@@ -1,6 +1,14 @@
-const React = require('react')
+import React from 'react'
+const PropTypes = React.PropTypes
 
 const BlockText = React.createClass({
+  propTypes: {
+    color: PropTypes.string,
+    fontFamily: PropTypes.string,
+    fontSize: PropTypes.number,
+    text: PropTypes.string.isRequired
+  },
+
   getDefaultProps () {
     return {
       color: 'black',
@@ -18,4 +26,4 @@ const BlockText = React.createClass({
   }
 })
 
-module.exports = BlockText
+export default BlockText
