@@ -1,6 +1,6 @@
 import React from 'react'
 import BlockText from './blockText'
-import products from '../mockedProducts'
+import ProductsApi from '../productsApi'
 
 const imageStyle = {
   height: '200px',
@@ -13,17 +13,40 @@ const ProductDetails = React.createClass({
     resetSelectedProductId: React.PropTypes.func.isRequired
   },
 
+  getInitialState () {
+    return {
+      product: null
+    }
+  },
+
+  componentDidMount () {
+    ProductsApi.getById(this.props.selectedProductId, (error, response) => {
+      if (error) {
+        window.alert(error)
+        return
+      }
+
+      this.setState({product: response})
+    })
+  },
+
   render () {
-    const product = products.find(product => product.id === this.props.selectedProductId)
+    const {product} = this.state
     return (
       <div>
-        <BlockText color='orange' text={product.name} />
-        <div>
-          <img style={imageStyle} src={`images/${product.id}.jpg`} />
-          <span>{product.shortDescription}</span>
-        </div>
-        <div>{product.description}</div>
-        <button onClick={this.props.resetSelectedProductId}>Back</button>
+        {
+          !product ? null : (
+          <div>
+            <BlockText color='orange' text={product.name} />
+            <div>
+              <img style={imageStyle} src={`images/${product.id}.jpg`} />
+              <span>{product.shortDescription}</span>
+            </div>
+            <div>{product.description}</div>
+            <button onClick={this.props.resetSelectedProductId}>Back</button>
+          </div>
+          )
+        }
       </div>
     )
   }

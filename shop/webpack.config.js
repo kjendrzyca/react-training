@@ -20,7 +20,8 @@ module.exports = {
 
         include: [
           path.resolve(__dirname, 'app.js'),
-          path.resolve(__dirname, 'components')
+          path.resolve(__dirname, 'components'),
+          path.resolve(__dirname, 'productsApi.js')
         ],
 
         test: [/\.js$/]

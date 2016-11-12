@@ -1,5 +1,5 @@
 import React from 'react'
-import products from '../mockedProducts'
+import ProductsApi from '../productsApi'
 import SearchBox from './searchBox'
 import ProductListItem from './productListItem'
 
@@ -17,8 +17,20 @@ const ProductsList = React.createClass({
 
   getInitialState () {
     return {
-      searchTerm: ''
+      searchTerm: '',
+      products: []
     }
+  },
+
+  componentDidMount () {
+    ProductsApi.getAll((error, response) => {
+      if (error) {
+        window.alert(error)
+        return
+      }
+
+      this.setState({products: response})
+    })
   },
 
   search (searchTerm) {
@@ -30,7 +42,7 @@ const ProductsList = React.createClass({
       <div>
         <SearchBox search={this.search} />
         {
-          filterBy(this.state.searchTerm, products).map(product => (
+          filterBy(this.state.searchTerm, this.state.products).map(product => (
             <ProductListItem key={product.id} product={product} selectProduct={this.props.selectProduct} />
           ))
         }
