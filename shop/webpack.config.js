@@ -29,12 +29,11 @@ module.exports = {
     ]
   },
 
-  resolve: {extensions: ['', '.js']},
+  resolve: {extensions: ['.js']},
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.js'
+      name: 'vendor'
     })
   ],
 
